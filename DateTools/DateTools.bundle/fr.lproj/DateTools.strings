@@ -1,28 +1,37 @@
 /* No comment provided by engineer. */
+"%d days" = "%d jours";
 "%d days ago" = "Il y a %d jours";
 
 /* No comment provided by engineer. */
+"%d hours" = "%d heures";
 "%d hours ago" = "Il y a %d heures";
 
 /* No comment provided by engineer. */
+"%d minutes" = "%d minutes";
 "%d minutes ago" = "Il y a %d minutes";
 
 /* No comment provided by engineer. */
+"%d months" = "%d mois";
 "%d months ago" = "Il y a %d mois";
 
 /* No comment provided by engineer. */
+"%d seconds" = "%d secondes";
 "%d seconds ago" = "Il y a %d secondes";
 
 /* No comment provided by engineer. */
+"%d weeks" = "%d semaines";
 "%d weeks ago" = "Il y a %d semaines";
 
 /* No comment provided by engineer. */
+"%d years" = "%d ans";
 "%d years ago" = "Il y a %d ans";
 
 /* No comment provided by engineer. */
+"A minute" = "1 minute";
 "A minute ago" = "Il y a une minute";
 
 /* No comment provided by engineer. */
+"An hour" = "1 heure";
 "An hour ago" = "Il y a une heure";
 
 /* No comment provided by engineer. */
@@ -41,15 +50,19 @@
 "Yesterday" = "Hier";
 
 /* No comment provided by engineer. */
+"1 year" = "1 an";
 "1 year ago" = "Il y a 1 an";
 
 /* No comment provided by engineer. */
+"1 month" = "1 mois";
 "1 month ago" = "Il y a 1 mois";
 
 /* No comment provided by engineer. */
+"1 week" = "1 semaine";
 "1 week ago" = "Il y a 1 semaine";
 
 /* No comment provided by engineer. */
+"1 day" = "1 jour";
 "1 day ago" = "Il y a 1 jour";
 
 /* No comment provided by engineer. */

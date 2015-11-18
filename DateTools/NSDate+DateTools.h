@@ -35,10 +35,12 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date;
 - (NSString*)timeAgoSinceNow;
 - (NSString *)shortTimeAgoSinceNow;
+- (NSString *)mediumTimeAgoSinceNow;
 - (NSString *)timeAgoSinceDate:(NSDate *)date;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates;
 - (NSString *)timeAgoSinceDate:(NSDate *)date numericDates:(BOOL)useNumericDates numericTimes:(BOOL)useNumericTimes;
 - (NSString *)shortTimeAgoSinceDate:(NSDate *)date;
+- (NSString *)mediumTimeAgoSinceDate:(NSDate *)date;
 
 
 #pragma mark - Date Components Without Calendar

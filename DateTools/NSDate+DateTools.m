@@ -106,6 +106,14 @@ static NSCalendar *implicitCalendar = nil;
     return [self timeAgoSinceDate:[NSDate date]];
 }
 
+- (NSString *)numericTimeAgoSinceNow{
+	return [self numericTimeAgoSinceDate:[NSDate date]];
+}
+
+- (NSString *)numericTimeAgoSinceDate:(NSDate *)date {
+	return [self timeAgoSinceDate:date numericDates:YES numericTimes:YES];
+}
+
 /**
  *  Returns a shortened string with the most convenient unit of time representing
  *  how far in the past that date is from now.
@@ -193,8 +201,8 @@ static NSCalendar *implicitCalendar = nil;
 - (NSString *)localizedStringFor:(DateAgoFormat)format valueType:(DateAgoValues)valueType value:(NSInteger)value {
     BOOL isShort = format == DateAgoShort;
 	BOOL isMedium = format == DateAgoMedium;
-    BOOL isNumericDate = format == DateAgoLongUsingNumericDates || format == DateAgoLongUsingNumericDatesAndTimes;
-    BOOL isNumericTime = format == DateAgoLongUsingNumericTimes || format == DateAgoLongUsingNumericDatesAndTimes;
+    BOOL isNumericDate = format == DateAgoLongUsingNumericDates || format == DateAgoLongUsingNumericDatesAndTimes || format == DateAgoMedium;
+    BOOL isNumericTime = format == DateAgoLongUsingNumericTimes || format == DateAgoLongUsingNumericDatesAndTimes || format == DateAgoMedium;
     
     switch (valueType) {
         case YearsAgo:

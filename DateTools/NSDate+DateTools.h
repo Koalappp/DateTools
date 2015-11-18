@@ -34,6 +34,8 @@ NSLocalizedStringFromTableInBundle(key, @"DateTools", [NSBundle bundleWithPath:[
 + (NSString*)timeAgoSinceDate:(NSDate*)date;
 + (NSString*)shortTimeAgoSinceDate:(NSDate*)date;
 - (NSString*)timeAgoSinceNow;
+- (NSString *)numericTimeAgoSinceNow;
+- (NSString *)numericTimeAgoSinceDate:(NSDate *)date;
 - (NSString *)shortTimeAgoSinceNow;
 - (NSString *)mediumTimeAgoSinceNow;
 - (NSString *)timeAgoSinceDate:(NSDate *)date;

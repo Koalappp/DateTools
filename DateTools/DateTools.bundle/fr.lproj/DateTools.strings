@@ -27,12 +27,12 @@
 "%d years ago" = "Il y a %d ans";
 
 /* No comment provided by engineer. */
-"A minute" = "1 minute";
-"A minute ago" = "Il y a une minute";
+"1 minute" = "1 minute";
+"1 minute ago" = "Il y a une minute";
 
 /* No comment provided by engineer. */
-"An hour" = "1 heure";
-"An hour ago" = "Il y a une heure";
+"1 hour" = "1 heure";
+"1 hour ago" = "Il y a une heure";
 
 /* No comment provided by engineer. */
 "Just now" = "A l'instant";

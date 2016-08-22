@@ -45,7 +45,8 @@ typedef NS_ENUM(NSUInteger, DateAgoFormat){
     DateAgoLongUsingNumericDates,
     DateAgoLongUsingNumericTimes,
     DateAgoShort,
-	DateAgoMedium
+	DateAgoMedium,
+    DateAgoWeek,
 };
 
 typedef NS_ENUM(NSUInteger, DateAgoValues){
@@ -96,6 +97,10 @@ static NSCalendar *implicitCalendar = nil;
     return [date shortTimeAgoSinceDate:[NSDate date]];
 }
 
++ (NSString*)weekTimeAgoSinceDate:(NSDate*)date{
+    return [date weekTimeAgoSinceDate:[NSDate date]];
+}
+
 /**
  *  Returns a string with the most convenient unit of time representing
  *  how far in the past that date is from now.
@@ -128,6 +133,10 @@ static NSCalendar *implicitCalendar = nil;
 	return [self mediumTimeAgoSinceDate:[NSDate date]];
 }
 
+- (NSString *)weekTimeAgoSinceNow{
+    return [self weekTimeAgoSinceDate:[NSDate date]];
+}
+
 - (NSString *)timeAgoSinceDate:(NSDate *)date{
     return [self timeAgoSinceDate:date numericDates:NO];
 }
@@ -152,8 +161,13 @@ static NSCalendar *implicitCalendar = nil;
     return [self timeAgoSinceDate:date format:DateAgoShort];
 }
 
+
 - (NSString *)mediumTimeAgoSinceDate:(NSDate *)date{
 	return [self timeAgoSinceDate:date format:DateAgoMedium];
+}
+
+- (NSString *)weekTimeAgoSinceDate:(NSDate *)date{
+    return [self timeAgoSinceDate:date format:DateAgoWeek];
 }
 
 - (NSString *)timeAgoSinceDate:(NSDate *)date format:(DateAgoFormat)format {
@@ -203,7 +217,8 @@ static NSCalendar *implicitCalendar = nil;
 	BOOL isMedium = format == DateAgoMedium;
     BOOL isNumericDate = format == DateAgoLongUsingNumericDates || format == DateAgoLongUsingNumericDatesAndTimes || format == DateAgoMedium;
     BOOL isNumericTime = format == DateAgoLongUsingNumericTimes || format == DateAgoLongUsingNumericDatesAndTimes || format == DateAgoMedium;
-    
+    BOOL isWeek =  format == DateAgoWeek;
+
     switch (valueType) {
         case YearsAgo:
             if (isShort) {
@@ -239,7 +254,15 @@ static NSCalendar *implicitCalendar = nil;
             if (isShort) {
                 return [self logicLocalizedStringFromFormat:@"%%d%@d" withValue:value];
             } else if (value >= 2) {
-				return [self logicLocalizedStringFromFormat:isMedium ? @"%%d %@days" : @"%%d %@days ago" withValue:value];
+                if (isWeek && value <= 7) {
+                    NSDateFormatter *dayDateFormatter = [[NSDateFormatter alloc]init];
+                    dayDateFormatter.dateFormat = @"EEE";
+                    NSString *eee = [dayDateFormatter stringFromDate:self];
+
+                    return DateToolsLocalizedStrings(eee);
+                }
+
+                return [self logicLocalizedStringFromFormat:isMedium ? @"%%d %@days" : @"%%d %@days ago" withValue:value];
             } else if (isNumericDate) {
 				return DateToolsLocalizedStrings(isMedium ? @"1 day" : @"1 day ago");
             } else {
@@ -288,7 +311,7 @@ static NSCalendar *implicitCalendar = nil;
     NSString *localeCode = [[[NSBundle mainBundle] preferredLocalizations] objectAtIndex:0];
     
     // Russian (ru) and Ukrainian (uk)
-    if([localeCode isEqualToString:@"ru"] || [localeCode isEqualToString:@"uk"]) {
+    if([localeCode isEqualToString:@"ru-RU"] || [localeCode isEqualToString:@"uk"]) {
         int XY = (int)floor(value) % 100;
         int Y = (int)floor(value) % 10;
         
